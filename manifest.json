@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "运营薯（小红薯助手）",
+  "version": "1.3.0",
+  "description": "运营薯 - 小红书数据运营助手，支持侧边栏(SidePanel)操作、数据收集、飞书多维表格同步。",
+  "permissions": [
+    "sidePanel",
+    "scripting",
+    "activeTab",
+    "storage",
+    "identity",
+    "webRequest",
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://*.xiaohongshu.com/*",
+    "https://edith.xiaohongshu.com/*",
+    "https://open.feishu.cn/*",
+    "https://base-api.feishu.cn/*",
+    "http://122.51.104.47/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "action": {
+    "default_title": "打开运营薯",
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.xiaohongshu.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css", "logo.png", "logogif.gif"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

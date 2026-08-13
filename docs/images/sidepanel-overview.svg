@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <rect width="960" height="560" fill="#f6f7f9"/>
+  <rect x="56" y="36" width="848" height="488" rx="18" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="56" y="36" width="848" height="64" rx="18" fill="#fff"/>
+  <text x="88" y="76" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#111827">运营薯（小红书助手）</text>
+  <text x="88" y="122" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#111827">博主信息</text>
+  <text x="210" y="122" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#111827">笔记/赞藏</text>
+  <text x="350" y="122" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#ff2442">搜索笔记</text>
+  <rect x="350" y="132" width="72" height="3" rx="2" fill="#ff2442"/>
+  <text x="480" y="122" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#111827">单篇笔记</text>
+  <text x="612" y="122" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#111827">配置</text>
+  <rect x="88" y="164" width="784" height="150" rx="14" fill="#fafafa" stroke="#eceff3"/>
+  <text x="112" y="202" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#6b7280">采集来源</text>
+  <rect x="112" y="218" width="340" height="48" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="132" y="249" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" fill="#374151">当前搜索结果页</text>
+  <text x="492" y="202" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#6b7280">数量 (30-5000)</text>
+  <rect x="492" y="218" width="160" height="48" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="512" y="249" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" fill="#111827">30</text>
+  <rect x="112" y="282" width="190" height="48" rx="10" fill="#ff2442"/>
+  <text x="164" y="313" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#fff">采集搜索</text>
+  <rect x="318" y="282" width="190" height="48" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="370" y="313" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#6b7280">同步飞书</text>
+  <rect x="524" y="282" width="140" height="48" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="576" y="313" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#6b7280">导出</text>
+  <rect x="88" y="346" width="784" height="126" rx="14" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="112" y="374" width="72" height="72" rx="8" fill="#f1f5f9"/>
+  <text x="206" y="396" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#111827">搜索结果笔记标题</text>
+  <text x="206" y="426" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#6b7280">点赞数、类型、作者与链接</text>
+  <rect x="704" y="390" width="116" height="34" rx="8" fill="#fff" stroke="#e5e7eb"/>
+  <text x="736" y="412" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="14" fill="#374151">下载素材</text>
+</svg>

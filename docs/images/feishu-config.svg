@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <rect width="960" height="560" fill="#f6f7f9"/>
+  <rect x="56" y="36" width="848" height="488" rx="18" fill="#fff" stroke="#e5e7eb"/>
+  <text x="88" y="82" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#111827">配置</text>
+  <rect x="88" y="112" width="160" height="42" rx="10" fill="#ff2442"/>
+  <text x="132" y="139" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">飞书配置</text>
+  <rect x="268" y="112" width="160" height="42" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="312" y="139" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#6b7280">功能设置</text>
+  <rect x="88" y="180" width="784" height="56" rx="12" fill="#fff1f3" stroke="#ffd5dc"/>
+  <text x="112" y="213" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#4b5563">只需配置一次。Base Token 来自多维表格链接，Table ID 对应不同采集库。</text>
+  <text x="680" y="213" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#ff2442">打开多维表格模板</text>
+  <text x="88" y="274" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#6b7280">多维表格授权码 (Bearer Token)</text>
+  <rect x="88" y="292" width="784" height="46" rx="10" fill="#fafafa" stroke="#e5e7eb"/>
+  <text x="112" y="321" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#9ca3af">u-...</text>
+  <text x="88" y="370" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#6b7280">多维表格链接 / Base Token</text>
+  <rect x="88" y="388" width="784" height="46" rx="10" fill="#fafafa" stroke="#e5e7eb"/>
+  <text x="112" y="417" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#9ca3af">https://.../base/...</text>
+  <rect x="88" y="462" width="178" height="42" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="116" y="489" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#374151">博主库 Table ID</text>
+  <rect x="286" y="462" width="196" height="42" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="314" y="489" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#374151">博主笔记库 Table ID</text>
+  <rect x="502" y="462" width="196" height="42" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="530" y="489" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#374151">赞藏笔记库 Table ID</text>
+  <rect x="718" y="462" width="154" height="42" rx="10" fill="#fff" stroke="#e5e7eb"/>
+  <text x="742" y="489" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#374151">日常采集库</text>
+</svg>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>运营薯（小红书助手）</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="scraper-header">
+    <div class="header-title">
+      <img src="logo.png" alt="Logo" class="logo">
+      <div class="title-text">
+        <div style="display:flex;align-items:center;">
+          <h2>运营薯（小红书助手）</h2>
+          <div id="panel-status" style="margin-left:8px;font-size:12px;opacity:0.9;"></div>
+        </div>
+        <span class="subtitle">小红书数据运营助手 · <span id="validity-text">免费开放版</span></span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a id="help-link" href="https://zinxkclpk97.feishu.cn/wiki/KMMXwMwK6iheNukf2bkcJNcUnQe" target="_blank" class="help-link" title="使用说明">
+        <span>?</span>
+        <span>使用说明</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="scraper-tabs">
+    <div class="scraper-tab-item active" data-tab="tab-profile" data-tip="博主信息">
+        <span>博主信息</span>
+    </div>
+    <div class="scraper-tab-item" data-tab="tab-notes" data-tip="笔记/赞藏">
+        <span>笔记/赞藏</span>
+    </div>
+    <div class="scraper-tab-item" data-tab="tab-search-notes" data-tip="搜索笔记">
+        <span>搜索笔记</span>
+    </div>
+    <div class="scraper-tab-item" data-tab="tab-note-detail" data-tip="单篇笔记">
+        <span>单篇笔记</span>
+    </div>
+    <div class="scraper-tab-item" data-tab="tab-settings" data-tip="设置">
+        <span>配置</span>
+    </div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="tab-container">
+    
+    <!-- Tab 1: Profile Info -->
+    <div id="tab-profile" class="tab-content active">
+      <!-- Control Panel -->
+      <div class="control-panel">
+        <div class="panel-row">
+          <button class="md-btn md-btn-primary" id="btn-scrape-profile" style="flex:1;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> 
+            采集主页
+          </button>
+          <button class="md-btn md-btn-outlined" id="btn-sync-profile" style="flex:1;" title="采集成功后可同步">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            同步飞书
+          </button>
+        </div>
+        
+        <label class="toggle-wrapper" for="toggle-sync-images-profile">
+          <span class="toggle-label">同步头像图片</span>
+          <input type="checkbox" id="toggle-sync-images-profile" class="toggle-input" checked>
+        </label>
+      </div>
+
+      <div class="results-area" id="result-profile">
+        <div class="empty-state">
+          <div class="empty-state-title">等待采集</div>
+          <div class="empty-state-desc">打开小红书博主主页后点击“采集主页”。</div>
+          <button type="button" class="md-btn md-btn-outlined md-btn-small" data-open-xhs>打开小红书</button>
+        </div>
+      </div>
+
+      <div id="status-profile" class="status-line"></div>
+    </div>
+
+    <!-- Tab 2: Profile Notes -->
+    <div id="tab-notes" class="tab-content">
+      <div class="control-panel">
+        <div class="panel-row grid">
+          <div class="input-wrapper">
+            <label class="md-label">管理类型</label>
+            <select id="select-notes-type" class="md-input">
+                <option value="posted" selected>博主笔记</option>
+                <option value="collected">收藏笔记（可批量取消收藏）</option>
+                <option value="liked">点赞笔记（可批量取消点赞）</option>
+            </select>
+          </div>
+          <div class="input-wrapper">
+            <label class="md-label">数量 (30-5000)</label>
+            <input type="number" id="input-notes-limit" class="md-input" value="30" min="30" max="5000">
+          </div>
+        </div>
+
+        <div class="input-wrapper" style="display:none;">
+            <input type="number" id="input-notes-delay" class="md-input" value="3">
+        </div>
+
+        <div class="panel-row">
+          <button class="md-btn md-btn-primary" id="btn-scrape-profile-notes" style="flex:1.5;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> 
+            开始采集
+          </button>
+          <button class="md-btn md-btn-outlined" id="btn-sync-notes" style="flex:1.5;" title="采集成功后可同步">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            同步飞书
+          </button>
+          <button class="md-btn md-btn-outlined md-btn-compact" id="btn-export-notes" title="导出 Excel">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            导出
+          </button>
+        </div>
+
+        <div id="notes-mode-hint" class="mode-hint">采集博主笔记后可导出或同步到飞书。</div>
+
+        <label class="toggle-wrapper" for="toggle-sync-images-notes">
+          <span class="toggle-label">同步图片附件（耗时较长）</span>
+          <input type="checkbox" id="toggle-sync-images-notes" class="toggle-input" checked>
+        </label>
+      </div>
+
+      <div id="notes-list-controls" class="list-controls" style="display:none; margin-bottom: 8px;">
+        <div class="list-actions-left">
+            <label><input type="checkbox" id="check-all-notes"> 全选</label>
+            <span id="selected-count-text" style="font-size:12px;color:#666;margin-left:8px;"></span>
+        </div>
+        <div class="list-actions-right">
+            <select id="sort-notes" class="mini-select">
+                <option value="default">默认排序</option>
+                <option value="likes-desc">点赞数 ↓</option>
+                <option value="likes-asc">点赞数 ↑</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="results-area" id="result-notes">
+        <div id="notes-list-container">
+            <div class="empty-state">
+              <div class="empty-state-title">还没有笔记数据</div>
+              <div class="empty-state-desc">打开博主主页，选择采集类型和数量后开始采集。</div>
+              <button type="button" class="md-btn md-btn-outlined md-btn-small" data-open-xhs>打开小红书</button>
+            </div>
+        </div>
+      </div>
+      <div id="status-notes" class="status-line"></div>
+    </div>
+
+    <!-- Tab 3: Search Notes -->
+    <div id="tab-search-notes" class="tab-content">
+      <div class="control-panel">
+        <div class="panel-row grid">
+          <div class="input-wrapper">
+            <label class="md-label">采集来源</label>
+            <input type="text" class="md-input" value="当前搜索结果页" disabled>
+          </div>
+          <div class="input-wrapper">
+            <label class="md-label">数量 (30-5000)</label>
+            <input type="number" id="input-search-notes-limit" class="md-input" value="30" min="30" max="5000">
+          </div>
+        </div>
+
+        <div class="panel-row">
+          <button class="md-btn md-btn-primary" id="btn-scrape-search-notes" style="flex:1.5;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            采集搜索
+          </button>
+          <button class="md-btn md-btn-outlined" id="btn-sync-search-notes" style="flex:1.5;" title="采集成功后可同步">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            同步飞书
+          </button>
+          <button class="md-btn md-btn-outlined md-btn-compact" id="btn-export-search-notes" title="导出 Excel">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            导出
+          </button>
+        </div>
+
+        <div class="mode-hint">在小红书搜索结果页采集当前列表，滚动加载到目标数量后可导出或同步到飞书。</div>
+
+        <label class="toggle-wrapper" for="toggle-sync-images-search-notes">
+          <span class="toggle-label">同步图片附件（耗时较长）</span>
+          <input type="checkbox" id="toggle-sync-images-search-notes" class="toggle-input" checked>
+        </label>
+      </div>
+
+      <div id="search-list-controls" class="list-controls" style="display:none; margin-bottom: 8px;">
+        <div class="list-actions-left">
+            <label><input type="checkbox" id="check-all-search-notes"> 全选</label>
+            <span id="selected-count-search-text" style="font-size:12px;color:#666;margin-left:8px;"></span>
+        </div>
+        <div class="list-actions-right">
+            <select id="sort-search-notes" class="mini-select">
+                <option value="default">默认排序</option>
+                <option value="likes-desc">点赞数 ↓</option>
+                <option value="likes-asc">点赞数 ↑</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="results-area" id="result-search-notes">
+        <div class="empty-state">
+          <div class="empty-state-title">还没有搜索数据</div>
+          <div class="empty-state-desc">打开小红书搜索结果页后点击“采集搜索”。</div>
+          <button type="button" class="md-btn md-btn-outlined md-btn-small" data-open-xhs>打开小红书</button>
+        </div>
+      </div>
+      <div id="status-search-notes" class="status-line"></div>
+    </div>
+
+    <!-- Tab 4: Single Note Detail -->
+    <div id="tab-note-detail" class="tab-content">
+      <div class="control-panel">
+        <div class="panel-row">
+          <button class="md-btn md-btn-primary" id="btn-scrape-note-detail" style="flex:1.5;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> 
+            采集当前笔记
+          </button>
+          <button class="md-btn md-btn-outlined" id="btn-sync-note-detail" style="flex:1.5;" title="采集成功后可同步">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            同步飞书
+          </button>
+          <button class="md-btn md-btn-outlined md-btn-icon" id="btn-download-note-detail" title="下载素材">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          </button>
+        </div>
+
+        <label class="toggle-wrapper" for="toggle-sync-images-single">
+          <span class="toggle-label">同步所有图片附件</span>
+          <input type="checkbox" id="toggle-sync-images-single" class="toggle-input" checked>
+        </label>
+      </div>
+
+      <div class="results-area" id="result-note-detail">
+        <div class="empty-state">
+          <div class="empty-state-title">还没有笔记详情</div>
+          <div class="empty-state-desc">打开小红书笔记详情页后点击“采集当前笔记”。</div>
+          <button type="button" class="md-btn md-btn-outlined md-btn-small" data-open-xhs>打开小红书</button>
+        </div>
+      </div>
+      <div id="status-note-detail" class="status-line"></div>
+    </div>
+
+    <!-- Tab 4: Settings -->
+    <div id="tab-settings" class="tab-content">
+      <div class="control-panel">
+        
+        <!-- Sub-Tabs -->
+        <div class="settings-sub-tabs">
+          <div class="settings-sub-tab active" data-subtab="config-feishu">飞书配置</div>
+          <div class="settings-sub-tab" data-subtab="config-features">功能配置</div>
+        </div>
+
+        <!-- Section 1: Feishu Config -->
+        <div id="config-feishu" class="settings-section active">
+            <div class="config-hint">
+                只需配置一次。Base Token 来自多维表格链接，Table ID 对应不同采集库。
+                <a href="https://zinxkclpk97.feishu.cn/wiki/McHKwqoogiOpIik5cC8cJqt3nQe?table=blk0FFUqida7Qqri" target="_blank" rel="noopener noreferrer">打开多维表格模板</a>
+            </div>
+          <div class="input-wrapper">
+            <label class="md-label">多维表格授权码 (Bearer Token)</label>
+            <input type="text" id="input-bearer-token" class="md-input" placeholder="u-...">
+          </div>
+          
+          <div class="input-wrapper">
+            <label class="md-label">多维表格链接 / Base Token</label>
+            <input type="text" id="input-bitable-link" class="md-input" placeholder="https://feishu.cn/base/...">
+          </div>
+          
+          <div class="input-wrapper">
+            <label class="md-label">博主库 Table ID</label>
+            <input type="text" id="input-table-profile" class="md-input" placeholder="tbl...">
+          </div>
+          
+          <div class="input-wrapper">
+            <label class="md-label">博主笔记库 Table ID</label>
+            <input type="text" id="input-table-notes" class="md-input" placeholder="tbl...">
+          </div>
+
+          <div class="input-wrapper">
+            <label class="md-label">赞藏笔记库 Table ID</label>
+            <input type="text" id="input-table-liked-collected" class="md-input" placeholder="tbl...">
+          </div>
+          
+          <div class="input-wrapper">
+            <label class="md-label">日常采集库 Table ID</label>
+            <input type="text" id="input-table-daily" class="md-input" placeholder="tbl...">
+          </div>
+        </div>
+
+        <!-- Section 2: Feature Settings -->
+        <div id="config-features" class="settings-section">
+          <div class="feature-toggles">
+            <label class="toggle-wrapper">
+              <span class="toggle-label">显示“博主信息”页签</span>
+              <input type="checkbox" id="toggle-tab-profile" class="toggle-input" checked>
+            </label>
+            <label class="toggle-wrapper">
+              <span class="toggle-label">显示“博主笔记”页签</span>
+              <input type="checkbox" id="toggle-tab-notes" class="toggle-input" checked>
+            </label>
+            <label class="toggle-wrapper">
+              <span class="toggle-label">显示“搜索笔记”页签</span>
+              <input type="checkbox" id="toggle-tab-search-notes" class="toggle-input" checked>
+            </label>
+            <label class="toggle-wrapper">
+              <span class="toggle-label">显示“单篇笔记”页签</span>
+              <input type="checkbox" id="toggle-tab-note-detail" class="toggle-input" checked>
+            </label>
+          </div>
+          
+          <div class="divider" style="margin: 16px 0; height: 1px; background: #eee;"></div>
+
+          <div class="input-wrapper">
+            <label class="md-label">采集/同步/取消 随机间隔 (秒)</label>
+            <select id="select-interval" class="md-input">
+                <option value="2-5">2 - 5 秒</option>
+                <option value="5-10" selected>5 - 10 秒</option>
+                <option value="10-20">10 - 20 秒</option>
+                <option value="20-30">20 - 30 秒</option>
+            </select>
+          </div>
+          
+          <div class="panel-row">
+              <button id="btn-copy-cookie" class="md-btn md-btn-outlined" style="width:100%; justify-content: space-between;">
+                  <span>复制 Cookie</span>
+                  <span>🍪</span>
+              </button>
+           </div>
+         </div>
+
+        <div class="divider"></div>
+
+        <!-- Actions -->
+        <div class="settings-actions" style="display: flex; gap: 8px;">
+            <button class="md-btn md-btn-primary" id="btn-save-config" style="flex: 1;">保存配置</button>
+            <button class="md-btn md-btn-outlined" id="btn-export-logs" style="flex: 1;">导出日志</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="status-toast" style="position:fixed;top:60px;left:50%;transform:translateX(-50%);z-index:100;display:none;padding:8px 16px;border-radius:20px;background:rgba(0,0,0,0.8);color:#fff;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.15);white-space:nowrap;"></div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
