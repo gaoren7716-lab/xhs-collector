@@ -12,7 +12,7 @@ import shutil
 import ctypes
 import winreg
 
-EXT_ID = "ujbynndlkj21qqzh"
+EXT_ID = "hejhgpogmckpchlbehjadjbebpkpaenf"
 VERSION = "1.0.0"
 APP_NAME = "xhs-collector"
 
