@@ -1,19 +1,27 @@
+# ===== 上游原始忽略项 =====
 .idea/
 output/
-
 api.md
 .env
 .env.*
-
 node_modules/
 dist/
 build/
-
 *.log
 *.zip
 *.crx
 *.pem
 vercel.json
-
 Thumbs.db
 .DS_Store
+
+# ===== 本项目新增：密钥与预编译二进制（禁止入库） =====
+*.tar.gz          # 分发包
+*.exe             # 预编译安装包（内嵌签名私钥），仅作私有 Release 附件
+
+# ===== 打包中间产物 =====
+build_tmp/
+dist_tmp/
+*.spec
+__pycache__/
+*.pyc
