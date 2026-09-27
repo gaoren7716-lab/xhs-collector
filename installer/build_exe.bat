@@ -10,7 +10,6 @@ set PY="C:\Users\gaore\.workbuddy-ai\binaries\python\envs\default\Scripts\python
 %PY% -m PyInstaller --noconfirm --onefile ^
   --name xhs-collector-setup ^
   --add-data "xhs-collector.crx;." ^
-  --add-data "xhs-collector.pem;." ^
   --add-data "xhs-collector-v1.0.0.tar.gz;." ^
   install.py
 

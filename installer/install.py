@@ -18,7 +18,6 @@ APP_NAME = "xhs-collector"
 
 FILES = [
     ("xhs-collector.crx", "xhs-collector.crx"),
-    ("xhs-collector.pem", "xhs-collector.pem"),
     ("xhs-collector-v1.0.0.tar.gz", "xhs-collector-v1.0.0.tar.gz"),
 ]
 
